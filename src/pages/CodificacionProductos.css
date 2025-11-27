@@ -1,0 +1,89 @@
+@import "../styles/theme.css";
+
+/* CONTENEDOR PRINCIPAL */
+.codificacion-productos {
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+}
+
+/* HEADER */
+.codificacion-productos__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.codificacion-productos__header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #111827;
+  font-weight: 700;
+}
+.codificacion-productos__header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #111827;
+  font-weight: 700;
+}
+
+.codificacion-productos__controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.codificacion-productos__controls input {
+  padding: 8px 10px;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+}
+
+.codificacion-productos__btn {
+  margin: 0;
+}
+
+/* CONTENEDOR DE TABLA */
+.codificacion-productos__list {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.codificacion-productos__table-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+	max-height: calc(100vh - var(--navbar-height) - 140px);
+}
+
+/* La tabla usa .cabecera_estatica del theme.css para el sticky header */
+/* Solo agregamos estilos específicos de esta página si es necesario */
+
+/* Botones de acción */
+.codificacion-productos__action { border: none; padding: 0.36rem 0.75rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; color: var(--color-on-primary, #fff); display: inline-flex; align-items: center; justify-content: center; }
+.codificacion-productos__action--edit { background-color: var(--color-primary); }
+.codificacion-productos__action--edit:hover { background-color: var(--color-primary-dark); }
+.codificacion-productos__action--delete { background-color: var(--color-danger); }
+.codificacion-productos__action--delete:hover { background-color: var(--color-danger-dark, #dc2626); }
+.codificacion-productos__action--activate { background-color: var(--color-success); }
+.codificacion-productos__action--activate:hover { background-color: var(--color-success-dark, #1eb355); }
+
+/* spacing between action buttons when both present */
+.codificacion-productos__action + .codificacion-productos__action { margin-left: 8px; }
+
+/* descripción truncada para columnas largas */
+.codificacion-productos__desc { max-width: 360px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 900px) {
+	.codificacion-productos__desc { max-width: 140px; }
+	.codificacion-productos__table th, .codificacion-productos__table td { font-size: 0.9rem; padding: 8px 10px; }
+}

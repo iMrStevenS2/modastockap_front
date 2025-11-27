@@ -1,0 +1,41 @@
+.gestion-inventario-page {
+ 	display: flex;
+ 	flex-direction: column;
+ 	height: calc(100vh - var(--navbar-height));
+ 	overflow: hidden;
+ 	background: var(--color-bg-page);
+}
+
+.gestion-inventario__content {
+	display: flex;
+	flex: 1;
+}
+
+.gestion-inventario__sidebar {
+ 	width: 260px;
+ 	background: var(--color-card-bg);
+ 	border-right: 1px solid #e6e7f2;
+ 	padding: 24px;
+}
+
+.gestion-inventario__nav { display:flex; flex-direction: column; gap:8px; }
+.gestion-inventario__nav-btn {
+	text-align: left;
+	background: transparent;
+	border: none;
+	padding: 10px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	color: #374151;
+}
+.gestion-inventario__nav-btn.is-active { background: var(--color-primary); color: #fff; }
+
+.gestion-inventario__main {
+	flex: 1;
+	padding: 20px 28px;
+}
+
+@media (max-width: 900px) {
+	.gestion-inventario-page { flex-direction: column; }
+	.gestion-inventario__sidebar { width: 100%; display:flex; gap:12px; }
+}

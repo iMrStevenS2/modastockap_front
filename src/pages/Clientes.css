@@ -1,0 +1,199 @@
+@import "../styles/theme.css";
+
+/* CONTENEDOR PRINCIPAL */
+.clientes {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--navbar-height));
+  padding: 2rem;
+  background-color: var(--color-bg-page);
+}
+
+/* HEADER */
+.clientes__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.clientes__header h1 {
+  color: var(--color-text);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.clientes__btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.clientes__btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* FORMULARIO BÚSQUEDA */
+.clientes__search-form {
+  background-color: var(--color-surface-1);
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1rem;
+}
+
+.clientes__search-form h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--table-border);
+  padding-bottom: 8px;
+}
+
+.clientes__search-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clientes__search-radio {
+  display: flex;
+  gap: 16px;
+}
+
+.clientes__search-radio label {
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.clientes__search-group {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  min-width: 220px;
+}
+
+.clientes__search-group--name {
+  min-width: 260px;
+}
+
+.clientes__search-input {
+  padding: 9px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.98rem;
+  flex-grow: 1;
+}
+
+.clientes__search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.clientes__search-input.input--required:not(:focus):empty,
+.clientes__search-input.input--required:not(:focus):placeholder-shown {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.12);
+}
+
+.clientes__btn--search {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 9px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.clientes__btn--search:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.clientes__btn--clear {
+  background-color: var(--color-muted);
+  color: white;
+  padding: 9px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.clientes__btn--clear:hover {
+  background-color: #6b7280;
+}
+
+/* CONTENEDOR DE TABLA */
+.clientes__list {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.clientes__table-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+/* La tabla usa .cabecera_estatica del theme.css para el sticky header */
+/* Solo agregamos estilos específicos de esta página si es necesario */
+
+.clientes__notas {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* BOTONES ACCIÓN */
+.clientes__action {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.clientes__action--edit {
+  background-color: var(--color-primary);
+}
+
+.clientes__action--edit:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.clientes__action--delete {
+  background-color: var(--color-danger);
+}
+
+.clientes__action--delete:hover {
+  background-color: #dc2626;
+}
+
+.clientes__action--activate {
+  background-color: var(--color-success);
+}
+
+.clientes__action--activate:hover {
+  background-color: #1eb355;
+}
+
+/* MENSAJES */
+.clientes__empty,
+.clientes__loading {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+}

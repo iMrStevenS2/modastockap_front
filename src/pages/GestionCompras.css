@@ -1,0 +1,71 @@
+.gestion-compras {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+  background: var(--color-bg-page);
+}
+
+.gestion-compras__content {
+  display: flex;
+  flex: 1;
+}
+
+.gestion-compras__sidebar {
+  width: 260px;
+  background: var(--color-card-bg);
+  border-right: 1px solid var(--color-surface-1);
+  padding: 24px;
+}
+
+.gestion-compras__title { font-size: 1.1rem; font-weight:700; margin-bottom: 12px; color: var(--color-text); }
+.gestion-compras__nav { display:flex; flex-direction: column; gap:8px; }
+.gestion-compras__nav-btn {
+  text-align: left;
+  background: var(--color-surface-1);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--color-muted);
+}
+.gestion-compras__nav-btn.is-active { background: var(--color-primary); color: #fff; }
+
+.gestion-compras__main {
+  flex: 1;
+  padding: 20px 28px;
+}
+
+/* Layout: configurar la zona de scroll interno aquí (antes estaba en theme.css)
+   - El wrapper `.gestion-compras` controla la altura global de la página.
+   - `.gestion-compras__content > .gestion-compras__main` contiene la zona principal; dentro
+     de ésta el bloque `.insumos-catalogo__list` es el contenedor desplazable.
+   - Evitamos !important aquí para que las reglas de la página tengan prioridad
+     sobre reglas globales; si necesitas forzar algo específico, añadir un
+     comentario y usar !important sólo cuando sea imprescindible. */
+.gestion-compras__content > .gestion-compras__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0; /* importante para permitir shrink en flex */
+  overflow: visible;
+}
+
+.gestion-compras__content > .gestion-compras__main .insumos-catalogo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gestion-compras__content > .gestion-compras__main .insumos-catalogo__list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .gestion-compras { flex-direction: column; }
+  .gestion-compras__sidebar { width: 100%; display:flex; gap:12px; align-items: flex-start; }
+}

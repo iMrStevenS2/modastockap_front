@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./Login.css";
 import Navbar from "../components/Navbar";
 import axios from "axios";
-import Swal from "sweetalert2";
+import swal from '../utils/swal';
 
 function Login() {
   const [form, setForm] = useState({ usuario: "", password: "" });
@@ -14,8 +14,14 @@ function Login() {
     let message = "";
 
     if (field === "usuario") {
-      if (!value.trim()) message = "El usuario es obligatorio";
-      else if (value.length < 3) message = "Debe tener al menos 3 caracteres";
+      if (!value.trim()) {
+        message = "El usuario o correo es obligatorio";
+      } else if (
+        !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) &&
+        value.length < 3
+      ) {
+        message = "Debe ser un correo válido o tener al menos 3 caracteres";
+      }
     }
 
     if (field === "password") {
@@ -41,10 +47,7 @@ function Login() {
 
     const hasErrors = Object.values(errors).some((err) => err);
     if (hasErrors || !form.usuario || !form.password) {
-      // Swal.fire({
-      //   confirmButtonColor: "#4F46E5",
-      // });
-      Swal.mixin({
+      swal({
         icon: "warning",
         title: "Campos incompletos",
         text: "Por favor corrige los errores antes de continuar.",
@@ -70,7 +73,7 @@ function Login() {
         );
       }
 
-      await Swal.fire({
+      await swal({
         icon: "success",
         title: "Inicio de sesión exitoso",
         text: "Bienvenido al sistema 👋",
@@ -82,7 +85,7 @@ function Login() {
       window.location.href = "/"; // Redirección tras éxito
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      Swal.fire({
+      swal({
         icon: "error",
         title: "Error de autenticación",
         text:
@@ -114,7 +117,7 @@ function Login() {
               name="usuario"
               value={form.usuario}
               onChange={handleChange}
-              placeholder="usuario123"
+              placeholder="usuario123 o correo@example.com"
               required
               className={errors.usuario ? "input-error" : ""}
             />
@@ -144,12 +147,13 @@ function Login() {
             type="submit"
             className="login__button"
             disabled={isFormInvalid || isSubmitting}
+            aria-label="Iniciar sesión"
           >
             {isSubmitting ? "Entrando..." : "Entrar"}
           </button>
 
           <p className="login__footer">
-            ¿No tienes cuenta? <a href="#">Contáctanos</a>
+            ¿No tienes cuenta? <a href="/contacto">Contáctanos</a>
           </p>
         </form>
       </main>
